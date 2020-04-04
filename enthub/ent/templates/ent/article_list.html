@@ -1,0 +1,121 @@
+{% extends 'ent/base.html' %}
+
+{% block title %}Home | {{ block.super }}{% endblock %}
+
+
+
+{% block jumbotron %}
+    <section class="top-container">
+      
+        {% if b.image %}
+        <header class="showcase" style="background: url({{ b.image.url }})">
+        {% endif %}
+          <h1>{{ b.title|upper }}</h1>
+          <p>{{ b.bodysnippet|linebreaks }}</p>
+          <a href="{{ b.get_absolute_url }}" class="btn">Read More</a>
+        </header>
+        <div class="top-box top-box-a" style="background: url({{ .image.url }})">
+          {% if request.user.is_authenticated %}
+          <h4>{{ user.username|capfirst }}</h4>
+          {% else %}
+             <h4>PLACE YOUR ADS HERE</h4>
+          {% endif %}
+          <p class="price">NGN20,000/mo</p>
+          <a href="" class="btn">Advertise Now</a>
+        </div>
+        <div class="top-box top-box-b" style="background: url({{ .image.url }})">
+          <h4>PLACE YOUR ADS HERE</h4>
+          <p class="price">NGN10,000/we</p>
+          <a href="" class="btn">Advertise Now</a>
+        </div>
+      </section>
+
+{% endblock %}
+
+
+
+
+{% block post %}
+
+
+
+    <section class="boxes center">
+      {% for p in d %}
+        <div class="box">
+          
+          {% if p.image %}
+          <a href="{{ p.get_absolute_url }}">
+            <img src="{{ p.image.url }}" alt="Image Not Found" >
+          </a>    
+          {% endif %}
+          <h3 ><a href="{{ p.get_absolute_url }}">{{ p.title|upper }}</a></h3>
+          <p> {{ p.snippet|safe }} </p>
+        </div>
+        {% endfor %}
+        </section>
+
+<!--<ul class="pagination">
+  {% if posts.has_previous %}
+    <li class="page-item">
+      <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
+    </li>
+  {% endif %}
+
+  {% for p in page_range %}
+    {% if posts.number == p %}
+      <li class="page-item active">
+        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+      </li>
+    {% else %}
+      <li class="page-item">
+        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+
+  {% if posts.has_next %}
+    <li class="page-item">
+      <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
+    </li>
+  {% endif %}
+</ul> -->
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- Info Section -->
+      <section class="info">
+          {% if j.image %}
+              <img src="{{ j.image.url }}" alt="Image Not Found">
+          {% endif %}
+          <div>
+              <h2> {{ j.title|upper }} </h2>
+              <p> {{ j.snippet|safe }} </p>
+
+              <!-- <p id="fix"><small>Posted by: {{ i.author|capfirst }} | {{ i.created }}</small></p> -->
+              <a class="btn" href="{{ j.get_absolute_url }}">Learn More</a>
+          </div>
+      </section>
+
+
+{% endblock %}
+
+
+{% block main %}
+<section class="portfolio">
+
+    {% for l in g %}
+          {% if l.image %}
+          <a href="{{ l.get_absolute_url }}">
+                <img src="{{ l.image.url }}" alt="Image Not Found">
+          </a>
+          {% endif %}
+          
+    {% endfor %}
+  </section>
+
+{% endblock %}

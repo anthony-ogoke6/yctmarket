@@ -1,0 +1,136 @@
+{% extends 'ent/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block container %}
+     <div class="limiter">
+            <div class="container-login100">
+              <div class="wrap-login100">
+                                      
+
+              {% if form %}
+
+                <form method="post" action="{% url 'signup_view' %}" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                  {% csrf_token %}
+                  <span class="login100-form-title">
+                    Sign Up
+                  </span>
+
+                  <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    {{ form.username }}
+                    
+                    <span class="focus-input100"></span>
+                  </div>
+                  {% if form.errors %}
+                  <div class="wrap-input100 validate-input m-b-16">{{ form.username.errors }}</div>
+                  {% endif %}
+
+
+                  <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    {{ form.first_name }}
+                    
+                    <span class="focus-input100"></span>
+                  </div>
+
+                   <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    {{ form.last_name }}
+                    
+                    <span class="focus-input100"></span>
+                  </div>
+
+                   <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    {{ form.email }}
+                    
+                    <span class="focus-input100"></span>
+                  </div>
+                  {% if form.errors %}
+                  <div class="wrap-input100 validate-input m-b-16">{{ form.email.errors }}</div>
+                  {% endif %}
+
+                   <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    {{ form.password1 }}
+                    
+                    <span class="focus-input100"></span>
+                  </div>
+
+                   <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                    {{ form.password2 }}
+                    
+                    
+                    <span class="focus-input100"></span>
+                  </div>
+                  {% if form.errors %}
+                  <div class="wrap-input100 validate-input m-b-16">{{ form.errors.password2 }}</div>
+                  {% endif %}
+
+
+
+                  <div class="text-right p-t-13 p-b-23">
+                    <span class="txt1">
+                      Forgot
+                    </span>
+
+                    <a href="#" class="txt2">
+                      Username / Password?
+                    </a>
+                  </div>
+
+                  <div class="container-login100-form-btn">
+                    <button id="submitt" class="login100-form-btn">
+                      Sign up
+                    </button>
+                  </div>
+
+                  {% if request.GET.next %}
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                  {% endif %}
+
+                  <div class="flex-col-c p-t-170 p-b-40">
+                    <span class="txt1 p-b-9">
+                      Don’t have an account?
+                    </span>
+
+                    <a href="#" class="txt3">
+                      Sign up now
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+										    
+										  </form>
+                                      {% endif %}
+                            </div>
+                    </div>
+                </div>
+              
+                     
+          </div>
+
+          <hr>
+
+        </div> <!-- /container -->
+{% endblock %}
+
+
+{% block java %}
+  <script>
+        var inputs = document.querySelectorAll('input');
+        for (var index = 0; index < inputs.length; ++index){
+            inputs[1].setAttribute('placeholder',"Username");
+            inputs[2].setAttribute('placeholder',"Firstname");
+            inputs[3].setAttribute('placeholder',"Lastname");
+            inputs[4].setAttribute('placeholder',"Email");
+            inputs[5].setAttribute('placeholder',"Password");
+            inputs[6].setAttribute('placeholder',"Confirm Password");
+            inputs[index].setAttribute('class', 'input100');
+            inputs[index].required = true;
+
+        }
+
+        var error = document.querySelector('li');
+        error.style.color = red;
+
+    </script>
+    {% endblock %}

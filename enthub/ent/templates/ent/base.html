@@ -1,0 +1,114 @@
+{% load staticfiles %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-site-verification" content="TN_9e6IFIZ7rarwBvdQ0AnNaCK4uILQ5kuNDggoUpDc" />
+    <meta name="ycthub" content="Yabatech, O.A.U, Unilag, gist, entertainment, fashion, products, advertise, sell, blog">
+    
+
+    {% block tweet %}
+
+    {% endblock %}
+
+    <title>{% block title %}YCT-Hub{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"  href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}" >
+<!--===============================================================================================-->  
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
+
+    <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
+
+
+    <link href="{% static 'css/jumbotron.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+  </head>
+
+  <body>
+
+    {% include 'ent/navbar.html' %}
+
+
+    <div id="set1">
+
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags  }}">
+              {{ message }}
+            </div>
+        {% endfor %}
+                  
+    {% block jumbotron %}
+    {% endblock %}
+
+    {% block con %}
+
+    {% endblock %}
+
+
+    {% block container %}
+
+    {% endblock %}
+
+
+    {% block post %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block main %}
+
+    {% endblock %}
+
+    </div>
+    {% block style %}
+    {% endblock %}
+
+    {% include 'ent/footer.html' %}
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+    <script src="{% static 'javascript/main.js' %}"></script>
+    {% block java %}
+    {% endblock %}
+    
+
+
+    <script src="{% static 'javascript/add.js' %}"></script>
+
+  </body>
+</html>
